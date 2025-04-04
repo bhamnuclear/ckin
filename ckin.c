@@ -129,7 +129,7 @@ int main(void)
                                     " [max. %d]\n",R_MAX);
             
     	    get_line(react, R_MAX*5);
-/*    	    strcpy(react,"12c(197au,197au)");*/
+    	    /*strcpy(react,"12c(197au,197au)");*/
     	    printf("Reaction/decay/isotope: %s\n",react);
 	    if (md != 5) flg = qval(react, 0);
 	    else extract_react(react, md);
@@ -549,7 +549,7 @@ int extract_react(char react[], int opt)
 	    }
 	}
     }
-/*    printf("Before read_masses:%d,%d,%d,%s,%f,:%f:%f,%f,%f\n",
+    /*printf("Before read_masses:%d,%d,%d,%s,%f,:%f:%f,%f,%f\n",
     dec[0],a[0],z[0],el[0],m[0],ba[0],dba[0],bea[0],dbea[0]);*/
     
     /*perform checks on reactions/decay and read masses*/
@@ -729,7 +729,7 @@ int kin(char react[], int opt)
     double  pi = 3.1415926535, bim = 0.0, rmin = 0.0;
     double  arr = 0.0, brr = 0.0, crr = 0.0, ej = 0.0, lin, lout;
     double  pc_in = 0.0, pc_out = 0.0;
-/*    double  ecr_in = 0.0, ecr_out = 0.0, dca, gam[4], pcr[4];
+    /*double  ecr_in = 0.0, ecr_out = 0.0, dca, gam[4], pcr[4];
     double  ar = 0.0, br = 0.0, cr = 0.0, phic = 0.0, phicr = 0.0;*/
     int     flg = 0, i = 0, j = 0, nnr = 0, n2s = 0, nrs = 0;
     char    ans[CHLEN] = "";
@@ -741,14 +741,14 @@ int kin(char react[], int opt)
     for (i = 0; i < 4; i++)
     {
 	bar[i] = 0.0;
-/*	gam[i] = 0.0;*/
+	/*gam[i] = 0.0;*/
 	e[i] = 0.0;
 	er[i] = 0.0;
 	ec[i] = 0.0;
 	ecr[i] = 0.0;
 	p[i] = 0.0;
 	pr[i] = 0.0;
-/*	pcr[i] = 0.0;*/
+	/*pcr[i] = 0.0;*/
 	tcr[i] = 0.0;
 	tr[i] = 0.0;
 	v[i] = 0.0;
@@ -850,14 +850,14 @@ int kin(char react[], int opt)
     er[0] = tr[0] + bar[0];
     er[1] = bar[1];
     etotr = er[0] + bar[1] - ex;
-/*    printf("etotr - m = %f\n",(etotr - bar[2] - bar[3]));*/
+    /*printf("etotr - m = %f\n",(etotr - bar[2] - bar[3]));*/
     
     /*beam energy in COM frame*/
     ec[0] = e[0]*ba[1]/(ba[0] + ba[1]);
     /*Coulomb barrier*/
-/*    ri = (double)R0*(pow(a[0],0.33333333)+pow(a[1],0.33333333)+(double)2.0);*/
+    /*ri = (double)R0*(pow(a[0],0.33333333)+pow(a[1],0.33333333)+(double)2.0);*/
     ri = (double)R0*(pow(ba[0],0.33333333)+pow(ba[1],0.33333333));
-/*    rf = (double)R0*(pow(a[2],0.33333333)+pow(a[3],0.33333333)+(double)2.0);*/
+    /*rf = (double)R0*(pow(a[2],0.33333333)+pow(a[3],0.33333333)+(double)2.0);*/
     rf = (double)R0*(pow(ba[2],0.33333333)+pow(ba[3],0.33333333));
     coulc = ((double)1.44*z[0]*z[1])/ri;
     coul = ( (double)1.0 + (ba[0]/ba[1]) )*coulc;
@@ -916,7 +916,7 @@ int kin(char react[], int opt)
 	
 		
 	/*constants for solving the quadratic equation for er[2]*/
-/*	ar = ((double)4*pr[0]*pr[0]*cos(theta)*cos(theta)) -
+	/*ar = ((double)4*pr[0]*pr[0]*cos(theta)*cos(theta)) -
 		((double)4*etotr*etotr);	
 	br = ( ((double)4*pow(etotr,3)) - ((double)4*pr[0]*pr[0]*etotr)
 		+ ((double)4*bar[2]*bar[2]*etotr)
@@ -1037,7 +1037,7 @@ int kin(char react[], int opt)
 	    for (i = 0; (i < 4) && (er[i] != (double)0.0); i++)
 	    {
 		vr[i] = pr[i]/er[i];
-/*		gam[i] = (double)1/sqrt((double)1 - (vr[i]*vr[i]));*/
+		/*gam[i] = (double)1/sqrt((double)1 - (vr[i]*vr[i]));*/
 	    }
 	    
 	    vcr_in = pr[0]/etotr;
@@ -1059,9 +1059,9 @@ int kin(char react[], int opt)
 	    tcr[3] = ecr[3] - bar[3];
 	    
 	    tcr_in = tcr[0] + tcr[1];
-/*	    tcr_out = tcr_in + qv - ex;*/
+	    /*tcr_out = tcr_in + qv - ex;*/
 	    tcr_out = tcr_in + bar[0] + bar[1] - bar[2] - bar[3] - ex;
-/*	    ecr_in = tcr_in + bar[0] + bar[1];
+	    /*ecr_in = tcr_in + bar[0] + bar[1];
 	    ecr_out = tcr_out + bar[2] + bar[3];*/
 	    	    	    
 	    vcr[0] = (vr[0] - vcr_in)/((double)1 - (vr[0]*vcr_in));
@@ -1070,24 +1070,24 @@ int kin(char react[], int opt)
 	    vcr[3] = sqrt( (double)1 - ((bar[3]*bar[3])/(ecr[3]*ecr[3])) );
 	    vcr[3] *= (double)-1;
 	    
-/*	    pcr[0] = ecr[0]*vcr[0];
+	    /*pcr[0] = ecr[0]*vcr[0];
 	    pcr[1] = ecr[1]*vcr[1];
 	    pcr[2] = ecr[2]*vcr[2];
 	    pcr[3] = ecr[3]*vcr[3];*/
             
-/*	    pcr[3] = (double)-1*pcr[2];*/
+	    /*pcr[3] = (double)-1*pcr[2];*/
 	    
 	    
 	    thetacr = (pr[2]*sin(theta));
 	    thetacr /= gam_vcr_out*( (pr[2]*cos(theta)) - (vcr_out*er[2]) );
 	    thetacr = atan(thetacr);
-/*	    thetacr = (vr[2]*cos(theta) - vcr_out)/((double)1 - (vr[2]*cos(theta)*vcr_out));
+	    /*thetacr = (vr[2]*cos(theta) - vcr_out)/((double)1 - (vr[2]*cos(theta)*vcr_out));
 	    thetacr = acos(thetacr/vcr[2]);
 	    thetacr = (vr[3]*cos(phir) - vcr_out)/((double)1 - (vr[3]*cos(phir)*vcr_out));
 	    thetacr = acos(thetacr/vcr[3]);*/
 	    if (thetacr < (double)0.0) thetacr += pi;
 	    
-/*	    phicr = pi - thetacr;*/
+	    /*phicr = pi - thetacr;*/
 		    
 	    for (i = 0; i < 4; i++) v[i] = p[i]/ba[i];
 	    
@@ -1107,7 +1107,7 @@ int kin(char react[], int opt)
 	    ec[3] *= ec_out;
 	    	    
 	    vc_in = (v[0]*ba[0])/(ba[0] + ba[1]);
-/*	    vc_out = vc_in*(ba[0] + ba[1])/(ba[2] + ba[3]);*/
+	    /*vc_out = vc_in*(ba[0] + ba[1])/(ba[2] + ba[3]);*/
 	    vc_out = (v[0]*ba[0])/(ba[2] + ba[3]);
 	    
 	    vc[0] = v[0] - vc_in;
@@ -1115,11 +1115,11 @@ int kin(char react[], int opt)
 	    vc[2] = sqrt((double)2.0*ec[2]/ba[2]);
 	    vc[3] = (double)-1.0*(ba[2]/ba[3])*vc[2];
 	    	
-/*	    thetac = asin( (sin(theta))*sqrt(e[2]/ec[2]) );*/
-/*	    thetac = asin( sin(theta)*(v[2]/vc[2]) );*/
-/*	    thetac = atan( (v[2]*sin(theta))/(v[2]*cos(theta) - vc_out) );*/    
+	    /*thetac = asin( (sin(theta))*sqrt(e[2]/ec[2]) );*/
+	    /*thetac = asin( sin(theta)*(v[2]/vc[2]) );*/
+	    /*thetac = atan( (v[2]*sin(theta))/(v[2]*cos(theta) - vc_out) );*/    
 	    thetac = acos( (v[2]*cos(theta) - vc_out)/vc[2] );	    
-/*    	    phic = pi - thetac;*/
+    	    /*phic = pi - thetac;*/
 	    
 	    /*twokin uses the following equations for vc[2], but is the
 	    same as that calculated here. But for calculating
@@ -1129,21 +1129,21 @@ int kin(char react[], int opt)
 	    two converge as target mass increases. Note the twokin formula
 	    needs transforming to the lab frame via rsxslab
 	    However, I think the twokin calculations are wrong*/
-/*    	    vc[2] = sqrt( (ba[3]/(ba[2]*(ba[0]+ba[1])))
+    	    /*vc[2] = sqrt( (ba[3]/(ba[2]*(ba[0]+ba[1])))
 		    *2.0*(( ( ba[1]/(ba[0]+ba[1]) )*e0)+qv) );*/
-/*    	    rsxs = z[0]*z[1];
+    	    /*rsxs = z[0]*z[1];
 	    rsxs /= vc[2]*vc[2]*(mu/2.0)*sin(thetac/(double)2.0)*sin(thetac/(double)2.0);*/
 	    rsxs = z[0]*z[1];
 	    rsxs /= (e0)*sin(theta/(double)2.0)*sin(theta/(double)2.0);
 	    rsxs *= rsxs;
 	    rsxs *= (double)1.3;
-/*	    rsxslab *= ( sin(thetac)*sin(thetac) )/
+	    /*rsxslab *= ( sin(thetac)*sin(thetac) )/
     	    	    	    ( sin(theta)*sin(theta)*cos(thetac-theta) );*/
 	    /*already in mb, not fm^2, so don't multiply by 10*/
 	    
 	    /*distance of closest approach (Classical) p397 Krane*/
 	    /*bim is impact parameter*/
-/*	    dca = 1.44*z[0]*z[1]/e0;*/
+	    /*dca = 1.44*z[0]*z[1]/e0;*/
 	    bim = (((1.44/2.0)*z[0]*z[1])/e0)*sqrt( (1+cos(theta))/(1-cos(theta)) );
 	    rmin = bim*cos(theta/2.0)/(1-sin(theta/2.0));
 	    
@@ -1325,7 +1325,7 @@ void get_ans(char ans[], int num, int md)
     	newt.c_cc[VMIN] = 1;
     	newt.c_cc[VTIME] = 0;
 	/*handle sigs*/
-/*    	newt.c_lflag |= ISIG;*/
+    	/*newt.c_lflag |= ISIG;*/
     	tcsetattr(0, TCSANOW, &newt);
     	i = 0;
     	while( (ans[i++] = (char)getchar()) != '\n' && i < num) ;
@@ -1493,7 +1493,7 @@ int read_masses(int p, int fmt)
     /*check list of decay particles for a match*/
     for (i = 0; (i < DMAX && fmt != 0 && a[p] == 0); i++)
     {
-/*	printf("el[p] = %c%c, decel[%d] = %c%c strlen = %d\n",
+	/*printf("el[p] = %c%c, decel[%d] = %c%c strlen = %d\n",
 		el[p][0],el[p][1],i,decel[i][0],decel[i][1],len);*/
 	if (! strncmp(el[p],decel[i],len) )
 	{
@@ -1501,7 +1501,7 @@ int read_masses(int p, int fmt)
 	    z[p]=decz[i];
 	    a[p]=deca[i];
 	    m[p]=decm[i];
-/*	    printf("Found decay particle match: %c%c %d\n",
+	    /*printf("Found decay particle match: %c%c %d\n",
 		    decel[i][0],decel[i][1],p);*/
 	    return 0;
 	}
@@ -1534,7 +1534,7 @@ int read_masses(int p, int fmt)
 	if (strlen(tel) == 2) ln = 2;
 	else ln = len;
 	
-/*      if (cnt < 6) printf("In read_masses: tel=%s\n",tel);
+        /*if (cnt < 6) printf("In read_masses: tel=%s\n",tel);
 	if (cnt < 6) printf("Debug1: fmt=%d, tn=%d tz=%d, ta=%d tel=%c%c len=%d\n",
     	    	fmt,tn,tz,ta,tel[0],tel[1], (int)strlen(tel));
 	if (cnt < 6) printf("Debug1: a[p]=%d, z[p]=%d, tel=%s len=%d el[p] = %c%c\n",
@@ -1565,7 +1565,7 @@ int read_masses(int p, int fmt)
 	    c = fgetc(fmtab);
     	    fscanf(fmtab, "%s",tans1);
             
-/*            printf("In read_masses: dbea=%f, tans1:%s:\n",dbea[p],tans1);*/
+            /*printf("In read_masses: dbea=%f, tans1:%s:\n",dbea[p],tans1);*/
 
     	    /*read the next rdchrs characters: for M_TABYR <=2016 read 21
                                                for M_TABYR >=2020 read 25*/

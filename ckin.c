@@ -9,7 +9,7 @@
 
 /*define the path to the mass-table file here before compiling*/
 /*#define M_TAB   "./mass_table_2003.txt"*/
-#define M_TAB 	"./mass_table_2020.txt"
+#define M_TAB 	"mass_table_2020.txt"
 #define M_TABYR 2020    /*mass table year*/
 #define R_MAX 	10      /*max no. of isotopes in reaction*/
 #define R0 	1.4	/*R_0 in fm*/
@@ -26,11 +26,11 @@
 /* Carl Wheldon April 2008 with physics input from Tzany Wheldon*/
 
 /* To compile:
-gcc ckin.c -Wall -pedantic -o ckin -lm -O2
+gcc ckin.c -Wall -pedantic -o ckin -O2 -DCOMPILE_DIR=\"$PWD\" -lm
     or, if you have libwclbes.a
-gcc ckin.c -Wall -o ckin -lm -O2 -DHAVE_WCLBES ./libwclbes.a -lgfortran
+gcc ckin.c -Wall -o ckin  -O2 -DHAVE_WCLBES -DCOMPILE_DIR=\"$PWD\" -lm ./libwclbes.a -lgfortran
     or, if you have the cern libraries:
-gcc ckin.c -Wall -o ckin -lm -O2 -DHAVE_WCLBES -L./cernlib -lmathlib -lkernlib -lgfortran
+gcc ckin.c -Wall -o ckin -O2 -DHAVE_WCLBES -DCOMPILE_DIR=\"$PWD\" -L./cernlib -lm -lmathlib -lkernlib -lgfortran
 */
 
 /*%%%% A program to work out some (relativistic) reaction kinematics %%%%*/
@@ -82,7 +82,7 @@ int main(void)
 {
     extern  FILE    *fmtab;
     int     flg = -1, md = 0;
-    char    react[R_MAX*5] = "";        
+    char    react[R_MAX*5] = "", full_fname[5*CHLEN];        
     
     printf("\n\t\t**** Welcome to program ckin ****\n   This works out"
     	   " Q-values and some 2-body reaction kinematics.\n"
@@ -90,14 +90,18 @@ int main(void)
 
     /*store colours*/
     store_colours();
-        
+    
+    strcpy(full_fname,COMPILE_DIR);
+    strcat(full_fname,"/");
+    strcat(full_fname,M_TAB);
+    /*printf("Full path to mass-table: %s\n",full_fname);*/
     /*open mass table file for reading*/
-    if ((fmtab= fopen(M_TAB, "r" )) == NULL)
+    if ((fmtab= fopen(full_fname, "r" )) == NULL)
     {
-    	printf("Cannot open mass-table file: %s \n", M_TAB);
+    	printf("Cannot open mass-table file: %s \n", full_fname);
     	return -1;			
     }
-    else printf("Opened mass-table file: %s\n",M_TAB);
+    else printf("Opened mass-table file: %s\n",full_fname);
     
     /*skip inital lines starting with # in mass-table file*/
     skip_hash(fmtab);

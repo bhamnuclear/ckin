@@ -91,6 +91,7 @@ int main(void)
     /*store colours*/
     store_colours();
     
+    /*construct full path to mass-table in the compile directory*/
     strcpy(full_fname,COMPILE_DIR);
     strcat(full_fname,"/");
     strcat(full_fname,M_TAB);

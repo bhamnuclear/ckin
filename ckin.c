@@ -23,7 +23,7 @@
 #else
 #define NUMOPT  6       /*number of options*/
 #endif
-/* Carl Wheldon April 2008 with physics input from Tzany Wheldon*/
+/* Carl Wheldon April 2008 with physics input from Tzany Kokalova*/
 
 /* To compile:
 gcc ckin.c -Wall -pedantic -o ckin -O2 -DCOMPILE_DIR=\"$PWD\" -lm

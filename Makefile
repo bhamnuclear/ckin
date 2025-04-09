@@ -7,7 +7,7 @@ CFLAGS = -Wall -lm -O2 -pedantic -DCOMPILE_DIR=\"$(PWD)\"
 all: check
 
 clean:
-	rm -f ckin
+	rm -f ckin check.c check.out
 check:
 	@echo "int main() { return 0; }" > check.c
 	@$(CC) check.c -lmathlib -lkernlib -o check.out > /dev/null 2>&1; \

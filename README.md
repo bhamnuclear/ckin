@@ -18,7 +18,7 @@ range of one or both, with *l* values from 0 &rarr; 8.
 
 Allowed special notation for particles/decay modes are:
  
-- *g*   &nbsp;gamma,
+- *g*   &nbsp;&nbsp;gamma,
 - *e-*  &nbsp;electron (same as *b-*),
 - *b-*  &nbsp;beta- (same as *e-*),
 - *e+*  &nbsp;positron (same as *b+*),

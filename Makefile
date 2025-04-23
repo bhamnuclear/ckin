@@ -7,7 +7,7 @@ CFLAGS = -Wall -lm -O2 -pedantic -DCOMPILE_DIR=\"$(PWD)\"
 all: check
 
 clean:
-	rm -f ckin
+	\rm -f ckin
 check:
 	@echo "int main() { return 0; }" > check.c
 	@$(CC) check.c -lmathlib -lkernlib -o check.out > /dev/null 2>&1; \
@@ -28,11 +28,15 @@ check:
 
 
 
-ckin :
-	$(CC) -o ckin ckin.c $(CFLAGS)
+ckin: ckin.c
+	$(CC) $< -o $@ $(CFLAGS)
 
-ckin_wclbes :
-	$(CC) -o ckin ckin.c $(CFLAGS) -DHAVE_WCLBES libwclbes.a -lgfortran
+ckin_wclbes: ckin.c
+	$(CC) $< -o $@ $(CFLAGS) -DHAVE_WCLBES libwclbes.a -lgfortran; \
+        \rm -f ckin; \
+        ln -s ckin_wclbes ckin
 
-ckin_cernlib :
-	$(CC) -o ckin ckin.c $(CFLAGS) -DHAVE_WCLBES -lmathlib -lkernlib -lgfortran
+ckin_cernlib: ckin.c
+	$(CC) $< -o $@ $(CFLAGS) -DHAVE_WCLBES -lmathlib -lkernlib -lgfortran; \
+        \rm -f ckin; \
+        ln -s ckin_cernlib ckin

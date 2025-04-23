@@ -48,10 +48,10 @@ Chinese Physics C**45**, 030003, March 2021,
 [DOI: 10.1088/1674-1137/abddaf](https://doi.org/10.1088/1674-1137/abddaf)
 
 The table itself can be found at
-(https://www-nds.iaea.org/amdc/ame2020/mass_1.mas20.txt).
+https://www-nds.iaea.org/amdc/ame2020/mass_1.mas20.txt .
 
 The previous evaluation table from 2016 can be found at  
-(https://www-nds.iaea.org/amdc/ame2016/mass16.txt).
+https://www-nds.iaea.org/amdc/ame2016/mass16.txt .
 
 The full list of ckin options is:
 

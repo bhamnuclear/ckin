@@ -29,11 +29,11 @@ Allowed special notation for particles/decay modes are:
 
 For isotopes, allowed special notation is:
 
-- n  &nbsp;<sup>1</sup>n - neutron,
-- p  &nbsp;<sup>1</sup>H - hydrogen (proton with bound electron),
-- d  &nbsp;<sup>2</sup>H - deuterium (deuteron with bound electron),
-- t  &nbsp;<sup>3</sup>H - tritium (triton with bound electron),
-- a  &nbsp;<sup>4</sup>He - helium-4 (alpha particle with bound electrons).
+- *n*  &nbsp;<sup>1</sup>n - neutron,
+- *p*  &nbsp;<sup>1</sup>H - hydrogen (proton with bound electron),
+- *d*  &nbsp;<sup>2</sup>H - deuterium (deuteron with bound electron),
+- *t*  &nbsp;<sup>3</sup>H - tritium (triton with bound electron),
+- *a*  &nbsp;<sup>4</sup>He - helium-4 (alpha particle with bound electrons).
 
 The input to ckin is the mass table from the latest (Open Access)
 mass evaulation:  

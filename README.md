@@ -35,7 +35,7 @@ For isotopes, allowed special notation is:
 - *t*  &nbsp;<sup>3</sup>H - tritium (triton with bound electron),
 - *a*  &nbsp;<sup>4</sup>He - helium-4 (alpha particle with bound electrons).
 
-The input to ckin is the mass table from the latest (Open Access)
+The input to `ckin` is the mass table from the latest (Open Access)
 mass evaulation:  
 *The Ame2020 atomic mass evaluation (I)*,  
 W.J. Huang, M. Wang, F.G. Kondev, G. Audi and S. Naimi,  
@@ -53,7 +53,7 @@ https://www-nds.iaea.org/amdc/ame2020/mass_1.mas20.txt .
 The previous evaluation table from 2016 can be found at  
 https://www-nds.iaea.org/amdc/ame2016/mass16.txt .
 
-The full list of ckin options is:
+The full list of `ckin` options is:
 
 1. Enter/change a reaction or decay;
 2. Calculate the reaction Q value;

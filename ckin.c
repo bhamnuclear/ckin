@@ -16,7 +16,7 @@
 #define DMAX 	8	/*max number of decay particles stored*/
 #define SMAX 	5	/*max number of special notation isotopes*/
 #define MXEX    10      /*max. number of excitation and ang. mom. values*/
-#define CHLEN   200     /*character length of char arrays*/
+#define CHLEN   250     /*character length of char arrays*/
 
 #ifdef HAVE_WCLBES
 #define NUMOPT  7       /*number of options*/
